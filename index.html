@@ -1,0 +1,296 @@
+<html>
+<title>Search</title>
+<style>
+body{
+    background-color: #171717;
+    margin: 0px;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.block {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 100px;
+}
+.block-mini {
+    width: 75px;
+    height: 75px;
+    margin: 5px;
+}
+.btn{
+    width: 50px;
+    height: 20px;
+    float: right;
+}
+.ipt{
+    width: 350px;
+    height: 20px;
+    float: left;
+    margin-right: 10px;
+}
+</style>
+<body class="container">
+    <center>
+        <div class="data1">
+        </div>
+        <div class="data2">
+        </div>
+    </center>
+</body>
+<script>
+
+var url = ""; var next = "";
+
+var typeSeatch = `
+    <img class="block-mini" title="Пойск торрент файлов" onclick="listBrows('torrentList')" src="src/utorrent.png">
+    <img class="block-mini" title="Пойск видео" onclick="listBrows('videoList')" src="src/videoList.png">
+    <img class="block-mini" title="Пойск сайтов" onclick="listBrows('siteList')" src="src/siteList.png">
+    <img class="block-mini" title="Пойск стримов" onclick="listBrows('streamList')" src="src/streamList.png">
+    <img class="block-mini" title="Пойск серверов" onclick="listBrows('serverSearch')" src="src/serverSearch.png">
+    <img class="block-mini" title="Пойск пользователей" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="Пойск картинок" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="Пойск игр" onclick="listBrows('')" src="src/.png">
+    <br>
+    <img class="block-mini" title="Пойск аниме" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="Пойск товаров" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="Пойск людей" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="Пойск программ" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="Пойск статей" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="Пойск модов" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="Пойск карт" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <br>
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <br>
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <br>
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <br>
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <br>
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <br>
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="" onclick="listBrows('')" src="src/.png">
+    <img class="block-mini" title="Пойск чего-то ещё..." onclick="listBrows('additional')" src="src/additional.png">
+`
+
+var serverSearch = `
+    <img class="block-mini" onclick="listBrows('minecraftServer')" src="src/minecraftServer.png">
+    <img class="block-mini" onclick="listBrows('discordServer')" src="src/discordServer.png">
+`
+
+var videoSearch = `
+    <img class="block-mini" onclick="setChoice('youtube')" src="src/youtube.png">
+    <img class="block-mini" onclick="setChoice('yaVideo')" src="src/yaVideo.png">
+    <img class="block-mini" onclick="setChoice('vkVideo')" src="src/vkVideo.png">
+    <br>
+    <img class="block-mini" onclick="setChoice('dailymotion')" src="src/dailymotion.png">
+    <img class="block-mini" onclick="setChoice('vimeo')" src="src/vimeo.png">
+    <img class="block-mini" onclick="setChoice('rutube')" src="src/rutube.png">
+`
+
+var torrentSearch = `
+    <img class="block-mini" onclick="setChoice('ThePirateBay')" src="src/ThePirateBay.png">
+    <img class="block-mini" onclick="setChoice('rutracker')" src="src/rutracker.png">
+    <img class="block-mini" onclick="setChoice('rutor')" src="src/rutor.png">
+    <img class="block-mini" onclick="setChoice('nnmclub')" src="src/nnmclub.png">
+    <img class="block-mini" onclick="setChoice('thelastgame')" src="src/thelastgame.png">
+`
+
+var siteSearch = `
+    <img class="block-mini" onclick="setChoice('google')" src="src/google.png">
+    <img class="block-mini" onclick="setChoice('yandex')" src="src/yandex.png">
+    <img class="block-mini" onclick="setChoice('duckgo')" src="src/duckgo.png">
+    <img class="block-mini" onclick="setChoice('bing')" src="src/bing.png">
+    <img class="block-mini" onclick="setChoice('yohoo')" src="src/yohoo.png">
+    <img class="block-mini" onclick="setChoice('baidu')" src="src/baidu.png">
+    <br>
+    <img class="block-mini" onclick="setChoice('ask')" src="src/ask.png">
+    <img class="block-mini" onclick="setChoice('naver')" src="src/naver.png">
+    <img class="block-mini" onclick="setChoice('aol')" src="src/aol.png">
+    <img class="block-mini" onclick="setChoice('brave')" src="src/brave.png">
+    <img class="block-mini" onclick="setChoice('lycos')" src="src/lycos.png">
+    <img class="block-mini" onclick="setChoice('ecosia')" src="src/ecosia.png">
+    <br>
+    <img class="block-mini" onclick="setChoice('excite')" src="src/excite.png">
+`
+
+var streamSearch = `
+    <img class="block-mini" onclick="setChoice('')" src="src/.png">
+`
+
+var searchList = `
+    <img class="block-mini" onclick="setChoice('shodan')" src="src/shodan.png">
+    <img class="block-mini" onclick="setChoice('wolframalpha')" src="src/wolframalpha.png">
+    <img class="block-mini" onclick="setChoice('archive')" src="src/archive.png">
+`
+
+var minecraftServer = `
+    <img class="block-mini" onclick="setChoice('mineserv')" src="src/mineserv.png">
+`
+
+var discordServer = `
+    <img class="block-mini" onclick="setChoice('discordserver1')" src="src/discordserver1.png">
+`
+
+function listBrows(x){
+    if(x=="type"){
+        document.querySelector(".data1").innerHTML = typeSeatch;
+    } else if(x=="torrentList"){
+        document.querySelector(".data1").innerHTML = torrentSearch;
+    } else if(x=="videoList"){
+        document.querySelector(".data1").innerHTML = videoSearch;
+    } else if(x=="siteList"){
+        document.querySelector(".data1").innerHTML = siteSearch;
+    } else if(x=="streamList"){
+        document.querySelector(".data1").innerHTML = streamSearch;
+    } else if(x=="additional"){
+        document.querySelector(".data1").innerHTML = searchList;
+    } else if(x=="serverSearch"){
+        document.querySelector(".data1").innerHTML = serverSearch;
+    } else if(x=="minecraftServer"){
+        document.querySelector(".data1").innerHTML = minecraftServer;
+    } else if(x=="discordServer"){
+        document.querySelector(".data1").innerHTML = discordServer;
+    } else if(x==""){
+        document.querySelector(".data1").innerHTML = "";
+    } else if(x==""){
+        document.querySelector(".data1").innerHTML = "";
+    } else if(x==""){
+        document.querySelector(".data1").innerHTML = "";
+    } else if(x==""){
+        document.querySelector(".data1").innerHTML = "";
+    } else if(x==""){
+        document.querySelector(".data1").innerHTML = "";
+    } else if(x==""){
+        document.querySelector(".data1").innerHTML = "";
+    } else if(x==""){
+        document.querySelector(".data1").innerHTML = "";
+    } else if(x==""){
+        document.querySelector(".data1").innerHTML = "";
+    } else if(x==""){
+        document.querySelector(".data1").innerHTML = "";
+    } else if(x==""){
+        document.querySelector(".data1").innerHTML = "";
+    } else if(x==""){
+        document.querySelector(".data1").innerHTML = "";
+    } else if(x==""){
+        document.querySelector(".data1").innerHTML = "";
+    } else {
+        document.querySelector(".data1").innerHTML = "";
+    }
+    document.querySelector(".data2").innerHTML = "";
+}
+
+function setChoice(x){
+    if(x=="google"){url="https://www.google.com/search?q="; next=""}
+    else if(x=="youtube"){url="https://www.youtube.com/search?q="; next=""}
+    else if(x=="yandex"){url="https://ya.ru/search/?text="; next=""}
+    else if(x=="duckgo"){url="https://duckduckgo.com/?t=h_&q="; next=""}
+    else if(x=="bing"){url="https://www.bing.com/search?q="; next=""}
+    else if(x=="yohoo"){url="https://search.yahoo.com/search?p="; next=""}
+    else if(x=="baidu"){url="https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=baidu&wd="; next=""}
+    else if(x=="wolframalpha"){url="https://www.wolframalpha.com/input?i="; next=""}
+    else if(x=="shodan"){url="https://www.shodan.io/search?query="; next=""}
+    else if(x=="ThePirateBay"){url="https://thepiratebay.org/search.php?q="; next=""}
+    else if(x=="ecosia"){url="https://www.ecosia.org/search?method=index&q="; next=""}
+    else if(x=="ask"){url="https://www.ask.com/web?q="; next="&o=0"}
+    else if(x=="naver"){url="https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query="; next=""}
+    else if(x=="aol"){url="https://search.aol.com/aol/search?q="; next=""}
+    else if(x=="archive"){url="https://archive.org/search?query="; next=""}
+    else if(x=="brave"){url="https://search.brave.com/search?q="; next=""}
+    else if(x=="excite"){url="https://results.excite.com/serp?q="; next=""}
+    else if(x=="lycos"){url="https://search13.lycos.com/web/?q="; next=""}
+    else if(x=="rutracker"){url="https://rutracker.org/forum/tracker.php?nm="; next=""}
+    else if(x=="rutor"){url="https://rutor.info/search/"; next=""}
+    else if(x=="nnmclub"){url="https://nnmclub.to/forum/search.php?cx=partner-pub-7768347321290299%3A4038489206&cof=FORID%3A10&q="; next=""}
+    else if(x=="thelastgame"){url="https://thelastgame.ru/?s="; next=""}
+    else if(x=="yaVideo"){url="https://ya.ru/video/search?text="; next=""}
+    else if(x=="vkVideo"){url="https://vk.com/video?q="; next=""}
+    else if(x=="dailymotion"){url="https://www.dailymotion.com/search/"; next="/videos"}
+    else if(x=="vimeo") {url="https://vimeo.com/search?q="; next=""}
+    else if(x=="rutube"){url="https://rutube.ru/search/?query="; next=""}
+    else if(x=="mineserv"){url="https://mineserv.top/?q"; next=""}
+    else if(x=="discordserver1"){url="https://discordserver.info/search/"; next=""}
+    else if(x=="discordlookup"){url="https://discordlookup.com/user/"; next=""}
+    else if(x=="discordId"){url="https://discord.id/"; next=""}
+    else if(x=="tineye"){url="https://tineye.com/"; next=""}
+    else if(x=="findsounds"){url="https://www.findsounds.com/"; next=""}
+    else if(x==""){url="https://www.softpedia.com/dyn-search.php?search_term="; next=""}
+    else if(x==""){url=""; next=""}
+    else if(x==""){url=""; next=""}
+    else if(x==""){url=""; next=""}
+    else if(x==""){url=""; next=""}
+    else if(x==""){url=""; next=""}
+    else if(x==""){url=""; next=""}
+    else if(x==""){url=""; next=""}
+    else if(x==""){url=""; next=""}
+    else if(x==""){url=""; next=""}
+
+    
+    document.querySelector(".data1").innerHTML = `
+        <img class="block" src="src/${x}.png" onclick="listBrows('type')">
+    `;
+    document.querySelector(".data2").innerHTML = `
+        <br><input class="ipt">
+        <button class="btn" onclick="search()">🔍</button>
+    `;
+
+    document.querySelector('.ipt').addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') { search() }
+    });
+}
+
+function search() {
+    const query = document.querySelector('.ipt').value;
+    if (query) { window.location.href = url + encodeURIComponent(query) + next }
+}
+
+listBrows("type");
+
+</script>
+</html>
